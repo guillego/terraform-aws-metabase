@@ -39,6 +39,7 @@ resource "aws_ecs_service" "this" {
 
   network_configuration {
     security_groups = [aws_security_group.ecs.id]
+    assign_public_ip = true
     subnets         = tolist(var.public_subnet_ids)
   }
 }

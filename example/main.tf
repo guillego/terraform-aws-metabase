@@ -30,12 +30,14 @@ resource "aws_internet_gateway" "this" {
 
 resource "aws_subnet" "a" {
   vpc_id            = aws_vpc.this.id
+  map_public_ip_on_launch = true
   cidr_block        = cidrsubnet("10.0.0.0/16", 4, 0)
   availability_zone = "eu-central-1a" # Modify this to suit your region
 }
 
 resource "aws_subnet" "b" {
   vpc_id            = aws_vpc.this.id
+  map_public_ip_on_launch = true
   cidr_block        = cidrsubnet("10.0.0.0/16", 4, 1)
   availability_zone = "eu-central-1b" # Modify this to suit your region
 }
