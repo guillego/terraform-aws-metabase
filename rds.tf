@@ -2,7 +2,7 @@ resource "aws_rds_cluster" "this" {
   cluster_identifier_prefix       = "${var.id}-"
   final_snapshot_identifier       = "${var.id}-${formatdate("YYYYMMDDhhmmss", timestamp())}"
   copy_tags_to_snapshot           = true
-  engine                          = "aurora"
+  engine                          = "aurora-postgresql"
   engine_mode                     = "serverless"
   database_name                   = "metabase"
   master_username                 = "root"
@@ -18,7 +18,7 @@ resource "aws_rds_cluster" "this" {
 
   scaling_configuration {
     auto_pause   = var.auto_pause
-    min_capacity = 1
+    min_capacity = 2
     max_capacity = var.max_capacity
   }
 
