@@ -39,7 +39,7 @@ resource "aws_ecs_service" "this" {
 
   network_configuration {
     security_groups = [aws_security_group.ecs.id]
-    subnets         = tolist(var.private_subnet_ids)
+    subnets         = tolist(var.public_subnet_ids)
   }
 }
 
